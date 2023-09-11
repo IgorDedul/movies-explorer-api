@@ -10,16 +10,19 @@ const cookieParser = require('cookie-parser');
 
 const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/users');
-const { validateLogin, validateCreateUser } = require('./middlewares/validation');
+const { loginValidator, createUserValidator } = require('../middlewares/validator');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/NotFoundError');
 
+const movieRouter = require('./routes/movies');
+const userRouter = require('./routes/users');
+
 const app = express();
 
-const { PORT = 3000, DATABASE_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 3000, DATABASE_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -35,22 +38,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors);
 
-mongoose.connect(DATABASE_URL);
+mongoose.connect(DATABASE_URL)
+  .then(() => {
+    console.log(`App is connected to database on URL ${DATABASE_URL}`);
+  })
+  .catch((err) => {
+    console.log(`Error connecting to database on URL ${DATABASE_URL}`);
+    console.error(err);
+  });
 
 app.get('/', (req, res) => res.send('Сервер в работе'));
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+router.post('/signin', loginValidator, login);
+router.post('/signup', createUserValidator, createUser);
 
-app.post('/signin', validateLogin, login);
-app.post('/signup', validateCreateUser, createUser);
+router.use(auth);
+router.use('/users', userRouter);
+router.use('/movies', movieRouter);
 
-app.use(auth);
-app.use(require('./routes/users'));
-app.use(require('./routes/cards'));
+router.use('*', notFoundHandler);
 
 app.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
 app.use(errorLogger);
