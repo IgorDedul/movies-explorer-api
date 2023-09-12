@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 
 const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/users');
-const { loginValidator, createUserValidator } = require('../middlewares/validator');
+const { loginValidator, createUserValidator } = require('./middlewares/validator');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
