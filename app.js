@@ -16,6 +16,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errorHandler');
+const notFoundHandler = require('./middlewares/notFoundHandler');
 const NotFoundError = require('./errors/NotFoundError');
 
 const movieRouter = require('./routes/movies');
