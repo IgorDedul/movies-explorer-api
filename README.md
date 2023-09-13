@@ -2,7 +2,7 @@
 
 **Факультет: "Веб-разработчик"**
 
-**Проектная работа: "Mesto"**
+**Дипломная работа: "Movies"**
 
 _____________________________________________________________
 
@@ -29,7 +29,7 @@ _____________________________________________________________
 13. Mongoose/
 _____________________________________________________________
 
-**Ссылка на GitHub Pages:** https://igordedul.github.io/express-mesto-gha/
+**Ссылка на GitHub:** https://github.com/IgorDedul/movies-explorer-api/tree/level-1
 _____________________________________________________________
 
 **Выполнено: Дедуль Игорь**
@@ -53,9 +53,6 @@ _____________________________________________________________
 
 Удачи!
 
-
-
-[![Tests](../../actions/workflows/tests-13-sprint.yml/badge.svg)](../../actions/workflows/tests-13-sprint.yml) [![Tests](../../actions/workflows/tests-14-sprint.yml/badge.svg)](../../actions/workflows/tests-14-sprint.yml)
 # Проект Mesto фронтенд + бэкенд
 
 
@@ -71,3 +68,11 @@ _____________________________________________________________
 
 `npm run start` — запускает сервер   
 `npm run dev` — запускает сервер с hot-reload
+
+## Ссылки на проект
+
+IP-адрес: 51.250.85.21
+
+Frontend: https://igord.movies.nomoredomainsicu.ru
+
+Backend: https://api.igord.movies.nomoredomainsicu.ru
