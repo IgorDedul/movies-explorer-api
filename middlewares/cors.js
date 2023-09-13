@@ -1,4 +1,8 @@
 const ALLOWED_CORS = [
+  'http://igord.movies.nomoredomainsicu.ru',
+  'https://igord.movies.nomoredomainsicu.ru',
+  'http://api.igord.movies.nomoredomainsicu.ru',
+  'https://api.igord.movies.nomoredomainsicu.ru',
   'http://localhost:3000',
 ];
 const ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
