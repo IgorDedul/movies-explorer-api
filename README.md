@@ -74,5 +74,4 @@ _____________________________________________________________
 IP-адрес: 51.250.85.21
 
 Frontend: https://igord.movies.nomoredomainsicu.ru
-
 Backend: https://api.igord.movies.nomoredomainsicu.ru
