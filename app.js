@@ -49,16 +49,16 @@ mongoose.connect(DATABASE_URL)
     console.error(err);
   });
 
-app.get('/', (req, res) => res.send('Сервер в работе'));
+app.get('/', (req, res) => res.send('Сервер в работе!'));
 
-router.post('/signin', loginValidator, login);
-router.post('/signup', createUserValidator, createUser);
+app.post('/signin', loginValidator, login);
+app.post('/signup', createUserValidator, createUser);
 
-router.use(auth);
-router.use('/users', userRouter);
-router.use('/movies', movieRouter);
+app.use(auth);
+app.use(userRouter);
+app.use(movieRouter);
 
-//router.use('*', notFoundHandler);
+app.use('*', notFoundHandler);
 
 //app.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
 app.use(errorLogger);
