@@ -58,7 +58,7 @@ router.use(auth);
 router.use('/users', userRouter);
 router.use('/movies', movieRouter);
 
-router.use('*', notFoundHandler);
+//router.use('*', notFoundHandler);
 
 //app.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
 app.use(errorLogger);
