@@ -17,7 +17,7 @@ const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errorHandler');
 const notFoundHandler = require('./middlewares/notFoundHandler');
-const NotFoundError = require('./errors/NotFoundError');
+//const NotFoundError = require('./errors/NotFoundError');
 
 const movieRouter = require('./routes/movies');
 const userRouter = require('./routes/users');
@@ -60,7 +60,7 @@ router.use('/movies', movieRouter);
 
 router.use('*', notFoundHandler);
 
-app.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
+//app.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
 app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
